@@ -1,0 +1,13 @@
+stages:
+    - mvn build
+    - docker image build
+    - docker image push
+    - artifacts push
+    - build helm
+    - push helm
+    - deploy openshift
+
+mvn build:
+    stage: mvn build
+    script:
+        - mvn clean package -P local
